@@ -31,11 +31,11 @@ main {
   height: auto;
 }
 
-.firstpage {
+.landingpage {
   text-align: center;
 }
 
-.firstpage-header {
+.landingpage-header {
   font-family: Karla;
   font-size: 31px;
   font-weight: 700;
@@ -46,7 +46,7 @@ main {
   margin: 0px;
 }
 
-.firstpage-text {
+.landingpage-text {
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
@@ -57,7 +57,7 @@ main {
   margin: 7px 0 30px 0;
 }
 
-.firstpage-button {
+.landingpage-button {
   font-family: Inter;
   font-size: 16px;
   font-weight: 500;
@@ -72,7 +72,7 @@ main {
   background-color: #4d5b9e;
 }
 
-.secondpage {
+.mainpage {
   margin: 0 300px 0 300px;
   display: flex;
   flex-direction: column;

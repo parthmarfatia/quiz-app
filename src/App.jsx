@@ -1,12 +1,12 @@
-import BackgroundImages from "./components/BackgroundImages";
-import FirstPage from "./components/FirstPage";
-import SecondPage from "./components/SecondPage";
+import BackgroundImages from "./assets/BackgroundImages";
+import LandingPage from "./components/LandingPage";
+import MainPage from "./components/MainPage";
 
 function App() {
   return (
     <main>
       <BackgroundImages />
-      <SecondPage />
+      <MainPage />
     </main>
   );
 }
