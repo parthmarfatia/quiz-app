@@ -1,18 +1,22 @@
 function DisplayData(props) {
-  const { quizData } = props;
-  const displayData = quizData.map((data, index) => {
+  const { quizData, optionSelectionClick } = props;
+  const displayData = quizData.map((data, indexRow) => {
     const { question, correct_answer, incorrect_answers } = data;
     const all_answers = [...incorrect_answers];
     all_answers.splice(Math.floor(Math.random() * 4), 0, correct_answer);
-    const displayOptions = all_answers.map((ans, index) => {
+    const displayOptions = all_answers.map((ans, indexCol) => {
       return (
-        <div className="choice" key={index}>
+        <div
+          className="choice"
+          key={indexCol}
+          onClick={() => optionSelectionClick(indexRow, indexCol)}
+        >
           {ans}
         </div>
       );
     });
     return (
-      <div key={index}>
+      <div key={indexRow}>
         <h4 className="question">{question}</h4>
         <div className="options">{displayOptions}</div>
         <hr className="line" />

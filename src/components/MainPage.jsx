@@ -5,9 +5,16 @@ import ApiCall from "./MainPage/ApiCall";
 function SecondPage() {
   const quizData = ApiCall();
 
+  function optionSelectionClick(x, y) {
+    console.log(x, y);
+  }
+
   return (
     <div className="mainpage">
-      <DisplayData quizData={quizData} />
+      <DisplayData
+        quizData={quizData}
+        optionSelectionClick={optionSelectionClick}
+      />
       <Footer />
     </div>
   );

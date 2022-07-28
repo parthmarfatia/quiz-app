@@ -9,6 +9,7 @@ function ApiCall() {
       .then((res) => res.json())
       .then((data) => setQuizData(data.results));
   }, []);
+
   return quizData;
 }
 
