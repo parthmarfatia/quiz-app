@@ -74,6 +74,8 @@ main {
 
 .secondpage {
   margin: 0 300px 0 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .question {
@@ -84,7 +86,7 @@ main {
   letter-spacing: 0em;
   text-align: left;
   color: #293264;
-  margin: 15px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .options {
@@ -112,20 +114,35 @@ main {
   border: 0.8px solid #dbdef0;
 }
 
-.check-answers {
+.footer {
+  align-self: center;
   display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.check-button {
   font-family: Inter;
   font-size: 10px;
   font-weight: 600;
   line-height: 12px;
   letter-spacing: 0em;
   text-align: center;
-  justify-content: center;
-  align-items: center;
   color: white;
-  margin-top: 20px;
   background-color: #4d5b9e;
+  padding: 10px 20px;
+  border: none;
   border-radius: 10px;
-  width: 120px;
-  height: 30px;
+}
+
+.display-score {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #293264;
+  margin: 0 20px 0 0;
 }
