@@ -5,24 +5,36 @@ import ApiCall from "./MainPage/ApiCall";
 import DummyData from "./MainPage/DummyData";
 
 function SecondPage() {
-  let quizData = ApiCall();
+  const dataApi = ApiCall();
+  const [quizData, setQuizData] = useState(dataApi);
+  useEffect(() => {
+    setQuizData(dataApi);
+  }, [dataApi[0].question]);
 
   function optionSelectionClick(id) {
-    quizData = quizData.map((data) => {
-      const { all_answers } = data;
-      const answerSelected = all_answers.map((answers) => {
-        if (answers.id === id) {
-          return {
-            ...answers,
-            isHeld: !answers.isHeld,
-          };
-        } else {
-          return { ...answers };
-        }
+    setQuizData((prevData) => {
+      const newData = prevData.map((data) => {
+        const { all_answers } = data;
+        const answerSelected = all_answers.map((answers) => {
+          if (answers.id === id) {
+            return {
+              ...answers,
+              isHeld: !answers.isHeld,
+            };
+          } else {
+            return {
+              ...answers,
+              isHeld: false,
+            };
+          }
+        });
+        return { ...data, all_answers: answerSelected };
       });
-      return { ...data, all_answers: answerSelected };
+      return newData;
     });
   }
+
+  console.log(quizData);
 
   return (
     <div className="mainpage">
