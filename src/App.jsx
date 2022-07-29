@@ -5,8 +5,8 @@ import MainPage from "./components/MainPage";
 function App() {
   return (
     <main>
-      <BackgroundImages />
       <MainPage />
+      <BackgroundImages />
     </main>
   );
 }

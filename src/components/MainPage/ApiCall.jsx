@@ -10,7 +10,25 @@ function ApiCall() {
       .then((data) => setQuizData(data.results));
   }, []);
 
-  return quizData;
+  const modifiedQuizData = quizData.map((data) => {
+    const { question, correct_answer, incorrect_answers } = data;
+    const all_answers = [...incorrect_answers];
+    all_answers.splice(Math.floor(Math.random() * 4), 0, correct_answer);
+    const all_answers_modified = all_answers.map((answer) => {
+      return {
+        value: answer,
+        isHeld: false,
+        isCorrect: answer === correct_answer,
+      };
+    });
+    console.log(all_answers_modified);
+    return {
+      ...data,
+      all_answers: all_answers_modified,
+    };
+  });
+
+  return modifiedQuizData;
 }
 
 export default ApiCall;

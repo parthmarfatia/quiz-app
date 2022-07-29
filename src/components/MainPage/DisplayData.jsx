@@ -1,17 +1,15 @@
 function DisplayData(props) {
   const { quizData, optionSelectionClick } = props;
   const displayData = quizData.map((data, indexRow) => {
-    const { question, correct_answer, incorrect_answers } = data;
-    const all_answers = [...incorrect_answers];
-    all_answers.splice(Math.floor(Math.random() * 4), 0, correct_answer);
-    const displayOptions = all_answers.map((ans, indexCol) => {
+    const { question, correct_answer, incorrect_answers, all_answers } = data;
+    const displayOptions = all_answers.map((answer_option, indexCol) => {
       return (
         <div
           className="choice"
           key={indexCol}
           onClick={() => optionSelectionClick(indexRow, indexCol)}
         >
-          {ans}
+          {answer_option.value}
         </div>
       );
     });

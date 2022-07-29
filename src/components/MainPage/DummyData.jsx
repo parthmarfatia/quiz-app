@@ -4,7 +4,7 @@ function DummyData() {
     return {
       question: "",
       correct_answer: "",
-      incorrect_answers: new Array(4),
+      incorrect_answers: new Array(3),
     };
   });
   return dummyData;
