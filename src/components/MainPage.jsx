@@ -1,15 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplayData from "./MainPage/DisplayData";
 import Footer from "./MainPage/Footer";
 import ApiCall from "./MainPage/ApiCall";
+import DummyData from "./MainPage/DummyData";
 
 function SecondPage() {
-  const quizData = ApiCall();
+  let quizData = ApiCall();
 
-  console.log(quizData);
-
-  function optionSelectionClick(x, y) {
-    console.log(x, y);
+  function optionSelectionClick(id) {
+    quizData = quizData.map((data) => {
+      const { all_answers } = data;
+      const answerSelected = all_answers.map((answers) => {
+        if (answers.id === id) {
+          return {
+            ...answers,
+            isHeld: !answers.isHeld,
+          };
+        } else {
+          return { ...answers };
+        }
+      });
+      return { ...data, all_answers: answerSelected };
+    });
   }
 
   return (
