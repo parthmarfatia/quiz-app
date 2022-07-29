@@ -1,11 +1,13 @@
 function DisplayData(props) {
   const { quizData, optionSelectionClick } = props;
+  console.log(quizData);
   const displayData = quizData.map((data, index) => {
-    const { question, correct_answer, incorrect_answers, all_answers } = data;
+    const { question, all_answers } = data;
     const displayOptions = all_answers.map((answer_option) => {
+      const className = answer_option.isHeld ? "choice selected" : "choice";
       return (
         <div
-          className="choice"
+          className={className}
           key={answer_option.id}
           onClick={() => optionSelectionClick(answer_option.id)}
         >

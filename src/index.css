@@ -148,3 +148,8 @@ main {
   color: #293264;
   margin: 0 20px 0 0;
 }
+
+.selected {
+  background-color: #d6dbf5;
+  border: none;
+}

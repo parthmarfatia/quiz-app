@@ -16,16 +16,14 @@ function SecondPage() {
       const newData = prevData.map((data) => {
         const { all_answers } = data;
         const answerSelected = all_answers.map((answers) => {
-          if (answers.id === id) {
-            return {
-              ...answers,
-              isHeld: !answers.isHeld,
-            };
+          if (answers.id[0] === id[0]) {
+            if (answers.id === id) {
+              return { ...answers, isHeld: !answers.isHeld };
+            } else {
+              return { ...answers, isHeld: false };
+            }
           } else {
-            return {
-              ...answers,
-              isHeld: false,
-            };
+            return { ...answers };
           }
         });
         return { ...data, all_answers: answerSelected };
@@ -34,15 +32,13 @@ function SecondPage() {
     });
   }
 
-  console.log(quizData);
-
   return (
     <div className="mainpage">
       <DisplayData
         quizData={quizData}
         optionSelectionClick={optionSelectionClick}
       />
-      <Footer />
+      <Footer quizData={quizData} />
     </div>
   );
 }

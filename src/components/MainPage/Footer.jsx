@@ -1,4 +1,5 @@
-function Footer() {
+function Footer(props) {
+  const { quizData, checkAnswers } = props;
   return (
     <div className="footer">
       {false && (
