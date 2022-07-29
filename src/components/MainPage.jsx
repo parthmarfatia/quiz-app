@@ -4,11 +4,17 @@ import Footer from "./MainPage/Footer";
 import ApiCall from "./MainPage/ApiCall";
 import DummyData from "./MainPage/DummyData";
 
-function SecondPage() {
-  let dataApi = ApiCall();
+function MainPage() {
+  const [apiValue, setApiValue] = useState(0);
+  const dataApi = ApiCall(apiValue);
   const [quizData, setQuizData] = useState(dataApi);
   const [checkAnswerFlag, setCheckAnswerFlag] = useState(false);
   const [score, setScore] = useState(0);
+  const [baseData, setBaseData] = useState([]);
+
+  useEffect(() => {
+    setBaseData(dataApi);
+  }, []);
 
   useEffect(() => {
     setQuizData(dataApi);
@@ -48,7 +54,12 @@ function SecondPage() {
     });
   }
 
-  function playAgain() {}
+  function playAgain() {
+    setQuizData(baseData);
+    setCheckAnswerFlag(false);
+    setScore(0);
+    setApiValue((val) => val + 1);
+  }
 
   return (
     <div className="mainpage">
@@ -67,4 +78,4 @@ function SecondPage() {
   );
 }
 
-export default SecondPage;
+export default MainPage;

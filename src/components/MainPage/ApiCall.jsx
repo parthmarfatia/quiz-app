@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import DummyData from "./DummyData";
 
-function ApiCall() {
+function ApiCall(val) {
   const [quizData, setQuizData] = useState(DummyData);
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&category=19&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=5&category=9&type=multiple")
       .then((res) => res.json())
       .then((data) => setQuizData(data.results));
-  }, []);
+  }, [val]);
 
   const modifiedQuizData = quizData.map((data, indexRow) => {
     const { question, correct_answer, incorrect_answers } = data;
