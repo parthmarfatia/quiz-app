@@ -3,14 +3,26 @@ function DisplayData(props) {
   const displayData = quizData.map((data, index) => {
     const { question, all_answers } = data;
     const displayOptions = all_answers.map((answer_option) => {
-      const className = answer_option.isHeld ? "choice selected" : "choice";
+      let className;
+      const { id, value, isHeld, isCorrect } = answer_option;
+      if (checkAnswerFlag) {
+        className = isCorrect
+          ? "choice selected-correct"
+          : isHeld
+          ? "choice selected-incorrect"
+          : "choice not-selected";
+      } else {
+        className = isHeld ? "choice selected" : "choice";
+      }
       return (
         <div
           className={className}
-          key={answer_option.id}
-          onClick={() => optionSelectionClick(answer_option.id)}
+          key={id}
+          onClick={() => {
+            !checkAnswerFlag && optionSelectionClick(id);
+          }}
         >
-          {answer_option.value}
+          {value}
         </div>
       );
     });

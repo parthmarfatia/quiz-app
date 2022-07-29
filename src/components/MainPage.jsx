@@ -5,12 +5,14 @@ import ApiCall from "./MainPage/ApiCall";
 import DummyData from "./MainPage/DummyData";
 
 function SecondPage() {
-  const dataApi = ApiCall();
+  let dataApi = ApiCall();
   const [quizData, setQuizData] = useState(dataApi);
+  const [checkAnswerFlag, setCheckAnswerFlag] = useState(false);
+  const [score, setScore] = useState(0);
+
   useEffect(() => {
     setQuizData(dataApi);
   }, [dataApi[0].question]);
-  const [checkAnswerFlag, setCheckAnswerFlag] = useState(false);
 
   function optionSelectionClick(id) {
     setQuizData((prevData) => {
@@ -35,7 +37,18 @@ function SecondPage() {
 
   function checkAnswers() {
     setCheckAnswerFlag(true);
+    quizData.map((data) => {
+      const { all_answers } = data;
+      all_answers.map((option) => {
+        const { isHeld, isCorrect } = option;
+        if (isHeld && isCorrect) {
+          setScore((s) => s + 1);
+        }
+      });
+    });
   }
+
+  function playAgain() {}
 
   return (
     <div className="mainpage">
@@ -44,7 +57,12 @@ function SecondPage() {
         optionSelectionClick={optionSelectionClick}
         checkAnswerFlag={checkAnswerFlag}
       />
-      <Footer quizData={quizData} checkAnswers={checkAnswers} />
+      <Footer
+        checkAnswers={checkAnswers}
+        score={score}
+        checkAnswerFlag={checkAnswerFlag}
+        playAgain={playAgain}
+      />
     </div>
   );
 }
