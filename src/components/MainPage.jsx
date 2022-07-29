@@ -10,6 +10,7 @@ function SecondPage() {
   useEffect(() => {
     setQuizData(dataApi);
   }, [dataApi[0].question]);
+  const [checkAnswerFlag, setCheckAnswerFlag] = useState(false);
 
   function optionSelectionClick(id) {
     setQuizData((prevData) => {
@@ -32,13 +33,18 @@ function SecondPage() {
     });
   }
 
+  function checkAnswers() {
+    setCheckAnswerFlag(true);
+  }
+
   return (
     <div className="mainpage">
       <DisplayData
         quizData={quizData}
         optionSelectionClick={optionSelectionClick}
+        checkAnswerFlag={checkAnswerFlag}
       />
-      <Footer quizData={quizData} />
+      <Footer quizData={quizData} checkAnswers={checkAnswers} />
     </div>
   );
 }

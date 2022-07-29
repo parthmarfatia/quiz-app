@@ -1,6 +1,5 @@
 function DisplayData(props) {
-  const { quizData, optionSelectionClick } = props;
-  console.log(quizData);
+  const { quizData, optionSelectionClick, checkAnswerFlag } = props;
   const displayData = quizData.map((data, index) => {
     const { question, all_answers } = data;
     const displayOptions = all_answers.map((answer_option) => {
