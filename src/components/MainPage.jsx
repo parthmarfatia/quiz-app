@@ -11,6 +11,7 @@ function MainPage() {
   const [checkAnswerFlag, setCheckAnswerFlag] = useState(false);
   const [score, setScore] = useState(0);
   const [baseData, setBaseData] = useState([]);
+  console.log(quizData);
 
   useEffect(() => {
     setBaseData(dataApi);
