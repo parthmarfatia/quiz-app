@@ -21,14 +21,18 @@ function DisplayData(props) {
           onClick={() => {
             !checkAnswerFlag && optionSelectionClick(id);
           }}
-        >
-          {value}
-        </div>
+          dangerouslySetInnerHTML={
+            value ? { __html: `${value}` } : { __html: `` }
+          }
+        />
       );
     });
     return (
       <div key={index}>
-        <h4 className="question">{question}</h4>
+        <h4
+          className="question"
+          dangerouslySetInnerHTML={{ __html: `${question}` }}
+        />
         <div className="options">{displayOptions}</div>
         <hr className="line" />
       </div>
